@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3 (Python 3.13.4 on win32)" generated="2025-06-26T22:31:42.247246" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Demo" source="C:\robot_tests\test_demo.robot">
+<test id="s1-t1" name="Register New Account" line="14">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-06-26T22:31:42.537660" level="INFO">${RANDOM_STRING} = cNEOeAgE</msg>
+<var>${RANDOM_STRING}</var>
+<arg>8</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-06-26T22:31:42.537397" elapsed="0.000296"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-26T22:31:42.538039" level="INFO">${EMAIL} = testusercNEOeAgE@example.com</msg>
+<var>${EMAIL}</var>
+<arg>${EMAIL_PREFIX}${RANDOM_STRING}${EMAIL_DOMAIN}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-26T22:31:42.537871" elapsed="0.000192"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-26T22:31:42.538374" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001DD261BBA10&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-26T22:31:42.538199" elapsed="0.000198"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-06-26T22:31:42.538522" elapsed="0.000101"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-06-26T22:31:42.538951" level="INFO">Opening browser 'chrome' to base url 'https://web-demo.qahive.com/e-commerce/register'.</msg>
+<arg>${REGISTER_URL}</arg>
+<arg>chrome</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-06-26T22:31:42.538769" elapsed="1.754967"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-26T22:31:44.294516" level="INFO">Typing text 'testusercNEOeAgE@example.com' into text field 'xpath=//input[@name='email']'.</msg>
+<arg>xpath=//input[@name='email']</arg>
+<arg>${EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-26T22:31:44.294102" elapsed="0.268824"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-26T22:31:44.563688" level="INFO">Typing text 'TestPassword123!' into text field 'xpath=//input[@name='password']'.</msg>
+<arg>xpath=//input[@name='password']</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-26T22:31:44.563361" elapsed="0.173098"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-26T22:31:44.736966" level="INFO">Typing text 'Test User' into text field 'xpath=//input[@name='name']'.</msg>
+<msg time="2025-06-26T22:31:44.829713" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-06-26T22:31:44.829948" level="FAIL">Element with locator 'xpath=//input[@name='name']' not found.</msg>
+<arg>xpath=//input[@name='name']</arg>
+<arg>${NAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="FAIL" start="2025-06-26T22:31:44.736739" elapsed="0.148541">Element with locator 'xpath=//input[@name='name']' not found.</status>
+</kw>
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<arg>xpath=//select[@name='gender']</arg>
+<arg>${GENDER}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="NOT RUN" start="2025-06-26T22:31:44.885589" elapsed="0.000038"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath=//button[contains(.,'Submit') or @type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-06-26T22:31:44.885871" elapsed="0.000026"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/e-commerce</arg>
+<arg>20s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="NOT RUN" start="2025-06-26T22:31:44.886020" elapsed="0.000049"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-26T22:31:44.886339" elapsed="2.155848"/>
+</kw>
+<doc>Test registration of a new account</doc>
+<status status="FAIL" start="2025-06-26T22:31:42.536577" elapsed="4.505876">Element with locator 'xpath=//input[@name='name']' not found.</status>
+</test>
+<status status="FAIL" start="2025-06-26T22:31:42.248628" elapsed="4.794756"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test Demo" id="s1" pass="0" fail="1" skip="0">Test Demo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
