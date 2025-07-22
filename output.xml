@@ -1,90 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3 (Python 3.13.4 on win32)" generated="2025-07-03T18:47:04.690313" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Demo02" source="C:\robot_tests\test_demo02.robot">
-<test id="s1-t1" name="Register New Account" line="29">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-07-03T18:47:05.074453" level="INFO">${RANDOM_NUMBER} = 5869</msg>
-<var>${RANDOM_NUMBER}</var>
-<arg>random.randint(1000, 9999)</arg>
-<arg>random</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-07-03T18:47:05.074180" elapsed="0.000309"/>
-</kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-07-03T18:47:05.074860" level="INFO">${RANDOM_NUMBER} = 5869</msg>
-<arg>${RANDOM_NUMBER}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-07-03T18:47:05.074704" elapsed="0.000215"/>
-</kw>
-<kw name="Open Registration Page">
+<robot generator="Robot 7.3 (Python 3.13.4 on win32)" generated="2025-07-22T15:52:02.158056" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Demo02" source="c:\robot_tests\test_demo02.robot">
+<test id="s1-t1" name="TC-0003 Navigate between tab" line="29">
+<kw name="Open Registration Page" owner="Keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-03T18:47:05.075884" level="INFO">Opening browser 'Chrome' to base url 'https://web-demo.qahive.com/e-commerce/register'.</msg>
+<msg time="2025-07-22T15:52:02.454915" level="INFO">Opening browser 'Chrome' to base url 'https://web-demo.qahive.com/e-commerce/register'.</msg>
 <arg>${REGISTER_URL}</arg>
 <arg>Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-03T18:47:05.075634" elapsed="2.100911"/>
+<status status="PASS" start="2025-07-22T15:52:02.454630" elapsed="1.845894"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.176757" elapsed="0.041924"/>
+<status status="PASS" start="2025-07-22T15:52:04.300972" elapsed="0.047741"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>xpath=//input[@name='email']</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.218912" elapsed="0.018496"/>
+<status status="PASS" start="2025-07-22T15:52:04.349042" elapsed="0.031023"/>
 </kw>
-<status status="PASS" start="2025-07-03T18:47:05.075267" elapsed="2.162263"/>
+<status status="PASS" start="2025-07-22T15:52:02.453988" elapsed="1.926311"/>
 </kw>
-<kw name="Input Registration Info">
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-22T15:52:04.380742" elapsed="0.003003"/>
+</kw>
+<kw name="Input Login Info" owner="Keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-03T18:47:07.238221" level="INFO">Typing text 'testuser1@example.com' into text field 'xpath=//input[@name='email']'.</msg>
-<arg>xpath=//input[@name='email']</arg>
+<msg time="2025-07-22T15:52:04.385820" level="INFO">Typing text 'testuser1@example.com' into text field 'xpath=//input[@name='email']'.</msg>
+<arg>${xpath_email}</arg>
 <arg>${EMAIL}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.238039" elapsed="0.274582"/>
+<status status="PASS" start="2025-07-22T15:52:04.385190" elapsed="0.307418"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-03T18:47:07.513243" level="INFO">Typing text 'TestPassword123!' into text field 'xpath=//input[@name='password']'.</msg>
-<arg>xpath=//input[@name='password']</arg>
+<msg time="2025-07-22T15:52:04.693501" level="INFO">Typing text 'TestPassword123!' into text field 'xpath=//input[@name='password']'.</msg>
+<arg>${xpath_password}</arg>
 <arg>${PASSWORD}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.512820" elapsed="0.232591"/>
+<status status="PASS" start="2025-07-22T15:52:04.692977" elapsed="0.275142"/>
 </kw>
-<status status="PASS" start="2025-07-03T18:47:07.237805" elapsed="0.507764"/>
+<status status="PASS" start="2025-07-22T15:52:04.384587" elapsed="0.583762"/>
 </kw>
-<kw name="Submit Registration Form">
+<kw name="Submit Registration Form" owner="Keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-03T18:47:07.746306" level="INFO">Clicking button 'xpath=//button[contains(.,'Submit') or @type='submit']'.</msg>
-<arg>xpath=//button[contains(.,'Submit') or @type='submit']</arg>
+<msg time="2025-07-22T15:52:04.969717" level="INFO">Clicking button 'xpath=//button[@data-testid='submit']'.</msg>
+<arg>${xpath_submit}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.746148" elapsed="0.070159"/>
+<status status="PASS" start="2025-07-22T15:52:04.969205" elapsed="0.114030"/>
 </kw>
-<status status="PASS" start="2025-07-03T18:47:07.745892" elapsed="0.070573"/>
+<status status="PASS" start="2025-07-22T15:52:04.968789" elapsed="0.114662"/>
 </kw>
-<kw name="Verify Registration Success">
+<kw name="Verify Login Success" owner="Keywords">
 <kw name="Wait Until Location Contains" owner="SeleniumLibrary">
 <arg>/e-commerce</arg>
 <arg>10s</arg>
 <doc>Waits until the current URL contains ``expected``.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.817147" elapsed="0.012630"/>
+<status status="PASS" start="2025-07-22T15:52:05.084259" elapsed="0.005934"/>
 </kw>
 <kw name="Location Should Contain" owner="SeleniumLibrary">
-<msg time="2025-07-03T18:47:07.832517" level="INFO">Current location contains '/e-commerce'.</msg>
+<msg time="2025-07-22T15:52:05.094355" level="INFO">Current location contains '/e-commerce'.</msg>
 <arg>/e-commerce</arg>
 <doc>Verifies that the current URL contains ``expected``.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.829962" elapsed="0.002620"/>
+<status status="PASS" start="2025-07-22T15:52:05.090576" elapsed="0.004006"/>
 </kw>
-<status status="PASS" start="2025-07-03T18:47:07.816866" elapsed="0.015786"/>
+<status status="PASS" start="2025-07-22T15:52:05.083886" elapsed="0.010818"/>
+</kw>
+<kw name="Verify ECommerce Success" owner="Keywords">
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/e-commerce/product-list</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-07-22T15:52:05.095342" elapsed="4.083872"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-22T15:52:09.182127" level="INFO">Current location contains 'e-commerce/product-list'.</msg>
+<arg>e-commerce/product-list</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.179494" elapsed="0.002896"/>
+</kw>
+<status status="PASS" start="2025-07-22T15:52:05.095062" elapsed="4.087517"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-07-22T15:52:09.259488" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.183053" elapsed="0.077045"/>
+</kw>
+<kw name="Click Profile Tab" owner="Keywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${xpath_profile_tab}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.261254" elapsed="0.275868"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${xpath_profile_tab}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.537469" elapsed="0.012920"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-22T15:52:09.551393" level="INFO">Clicking element 'xpath=/html/body/div/section/main/aside[2]/div/div/div/a[2]'.</msg>
+<arg>${xpath_profile_tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.550838" elapsed="0.057232"/>
+</kw>
+<status status="PASS" start="2025-07-22T15:52:09.260621" elapsed="0.347716"/>
+</kw>
+<kw name="Verify Profile Success" owner="Keywords">
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/e-commerce/profile</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.609277" elapsed="0.005558"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-22T15:52:09.618526" level="INFO">Current location contains 'e-commerce/profile'.</msg>
+<arg>e-commerce/profile</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.615213" elapsed="0.003757"/>
+</kw>
+<status status="PASS" start="2025-07-22T15:52:09.608871" elapsed="0.010316"/>
+</kw>
+<kw name="Click ECommerce Tab" owner="Keywords">
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${xpath_ecommerce_tab}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.620883" elapsed="0.272631"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${xpath_ecommerce_tab}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.893804" elapsed="0.010167"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-22T15:52:09.904787" level="INFO">Clicking element 'xpath=//*[@id="root"]/section/main/aside[2]/div/div/div/a[1]'.</msg>
+<arg>${xpath_ecommerce_tab}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.904365" elapsed="0.047840"/>
+</kw>
+<status status="PASS" start="2025-07-22T15:52:09.620245" elapsed="0.332285"/>
+</kw>
+<kw name="Verify ECommerce Success" owner="Keywords">
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>/e-commerce/product-list</arg>
+<arg>10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.953502" elapsed="0.003841"/>
+</kw>
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-22T15:52:09.961711" level="INFO">Current location contains 'e-commerce/product-list'.</msg>
+<arg>e-commerce/product-list</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2025-07-22T15:52:09.957681" elapsed="0.004245"/>
+</kw>
+<status status="PASS" start="2025-07-22T15:52:09.953104" elapsed="0.009189"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-03T18:47:07.832917" elapsed="2.194785"/>
+<status status="PASS" start="2025-07-22T15:52:09.962841" elapsed="2.244395"/>
 </kw>
-<doc>Test registration of a new account and verify redirection to eCommerce page</doc>
-<status status="PASS" start="2025-07-03T18:47:05.073278" elapsed="4.954740"/>
+<doc>Navigate between product page and profile page</doc>
+<status status="PASS" start="2025-07-22T15:52:02.453286" elapsed="9.754526"/>
 </test>
-<status status="PASS" start="2025-07-03T18:47:04.691434" elapsed="5.337637"/>
+<status status="PASS" start="2025-07-22T15:52:02.162319" elapsed="10.046551"/>
 </suite>
 <statistics>
 <total>
