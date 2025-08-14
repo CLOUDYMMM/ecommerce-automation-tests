@@ -18,7 +18,7 @@ Input Login Info
     Input Text     ${xpath_email}    ${EMAIL}
     Input Text     ${xpath_password}    ${PASSWORD}
 
-Submit Registration Form
+Submit Form
     Click Button    ${xpath_submit}
 
 Verify Registration Success
@@ -52,3 +52,26 @@ Click Profile Tab
     Scroll Element Into View    ${xpath_profile_tab}
     Wait Until Element Is Visible    ${xpath_profile_tab}    10s
     Click Element    ${xpath_profile_tab}
+
+Click Add to Cart 1
+    Click Button    ${xpath_add_to_cart1}
+
+Click Add to Cart 2
+    Click Button    ${xpath_add_to_cart2}
+
+Click Cart icon
+    Click Element    ${xpath_cart} 
+
+
+Verify Product In Cart
+    [Arguments]    ${PRODUCT_NAME}    ${PRODUCT_PRICE}
+    ${xpath_name}=    Set Variable    //h5[text()='${PRODUCT_NAME}']
+    ${xpath_price}=   Set Variable    //h5[text()='${PRODUCT_NAME}']/following::h5[@class='mb-0'][1]
+    Element Should Contain    ${xpath_name}    ${PRODUCT_NAME}
+    Element Should Contain    ${xpath_price}   ${PRODUCT_PRICE}
+Verify Total Price
+    [Arguments]    ${EXPECTED_TOTAL}
+    ${xpath_total_label}=    Set Variable    ${XPATH_TOTAL_LABEL}
+    ${xpath_total_price}=   Set Variable    ${XPATH_TOTAL_PRICE}
+    Element Should Contain    ${xpath_total_label}    Total
+    Element Should Contain    ${xpath_total_price}    ${EXPECTED_TOTAL}
