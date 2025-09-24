@@ -1,0 +1,5 @@
+{
+  "robot.pythonpath": [
+    "${workspaceFolder}/venv/Lib/site-packages"
+  ]
+}
