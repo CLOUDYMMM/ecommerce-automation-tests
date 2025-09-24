@@ -13,35 +13,35 @@ Resource    resource/ProductPage.robot
 
 TC-0001 Add to cart and checkout cart with mug search 
     [Documentation]     search for 3 mug and add to cart then verify checkout is updated and correct price
-        Open signin page
-        Input signin data
-        Search for mug on search bar and click suggestion
-        Select white ceramic mug
-        Add multiple ceramic mugs To cart
-        Open cart page
-        Select all items in cart
-        Select coupon general12345
-        Verify checkout total
-        Remove all cart items
-        Verify Cart Is Empty
+        LoginPage.Open signin page
+        LoginPage.Input signin data
+        ProductPage.Search for mug on search bar and click suggestion
+        ProductPage.Select white ceramic mug
+        ProductPage.Add multiple ceramic mugs To cart    3
+        CartPage.Open cart page
+        CartPage.Select all items in cart
+        CartPage.Select coupon general12345
+        CartPage.Verify checkout total
+        CartPage.Remove all cart items
+        CartPage.Verify cart is empty
     [Teardown]     Close Browser
 
 TC-0002 Add to cart and Checkout Cart with Ceramic Mug search
     [Documentation]    search for 3 ceramic mug and add to cart then verify checkout is updated and correct price
-        Open signin page
-        Input signin data
-        Search for ceramic mug on search bar
-        Click search button
-        Find ceramic mug product
-        Click view details for ceramic mug
-        Select white ceramic mug
-        Add multiple ceramic mugs To cart
-        Open cart page
-        Select all items in cart
-        Select coupon general12345
-        Verify checkout total
-        Remove all cart items
-        Verify cart is empty
+        LoginPage.Open signin page
+        LoginPage.Input signin data
+        ProductPage.Search for ceramic mug on search bar
+        ProductPage.Click search button
+        ProductPage.Find ceramic mug product
+        ProductPage.Click view details for ceramic mug
+        ProductPage.Select white ceramic mug
+        ProductPage.Add multiple ceramic mugs To cart    3
+        CartPage.Open cart page
+        CartPage.Select all items in cart
+        CartPage.Select coupon general12345
+        CartPage.Verify checkout total
+        CartPage.Remove all cart items
+        CartPage.Verify cart is empty
     [Teardown]     Close Browser
 
 
