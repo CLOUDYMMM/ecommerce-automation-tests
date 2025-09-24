@@ -1,183 +1,208 @@
-# Robot Framework E-commerce Testing Project
+# Robot Framework Test Automation Project
 
-โปรเจคทดสอบระบบ E-commerce ด้วย Robot Framework สำหรับการทดสอบการเข้าสู่ระบบ การค้นหาสินค้า และการสั่งซื้อสินค้า
+## 📋 Project Overview
 
-## 📋 ภาพรวมโปรเจค
+This project contains automated test cases for the Doppio training platform e-commerce website. The tests focus on user authentication, product search, shopping cart functionality, and checkout processes.
 
-โปรเจคนี้เป็นชุดทดสอบอัตโนมัติสำหรับเว็บไซต์ E-commerce ที่ทดสอบฟีเจอร์หลักๆ ดังนี้:
-- การเข้าสู่ระบบ (Sign In)
-- การค้นหาสินค้า (Product Search)
-- การเพิ่มสินค้าลงตะกร้า (Add to Cart)
-- การจัดการตะกร้าสินค้า (Cart Management)
-- การคำนวณราคารวม (Checkout Calculation)
+## 🎯 Test Cases
 
-## 🛠️ เทคโนโลยีที่ใช้
+### TC-0001: Add to cart and checkout cart with mug search
+- **Description**: Search for 3 mugs, add to cart, verify checkout with correct pricing
+- **Steps**:
+  - Open signin page and authenticate
+  - Search for "Mug" and select "Ceramic Mug" from suggestions
+  - Select white ceramic mug
+  - Add 3 mugs to cart
+  - Apply coupon "General12345"
+  - Verify checkout total
+  - Clean up cart
 
-- **Robot Framework** - Framework สำหรับการทดสอบอัตโนมัติ
-- **SeleniumLibrary** - Library สำหรับควบคุม Web Browser
-- **Selenium WebDriver** - สำหรับควบคุม Edge Browser
-- **Python** - ภาษาที่ใช้ในการเขียน Test Scripts
+### TC-0002: Add to cart and checkout cart with ceramic mug search
+- **Description**: Search for ceramic mugs using search button, add to cart, verify checkout
+- **Steps**:
+  - Open signin page and authenticate
+  - Search for "Ceramic Mug" using search button
+  - Find and view ceramic mug details
+  - Select white ceramic mug
+  - Add 3 mugs to cart
+  - Apply coupon "General12345"
+  - Verify checkout total
+  - Clean up cart
 
-## 📁 โครงสร้างโปรเจค
+## 🛠️ Prerequisites
 
-```
-ecommerce-automation-tests/
-├── .gitignore                # Git ignore file
-├── .pabotsuitenames          # Pabot suite configuration
-├── README.md                 # เอกสารโปรเจค
-├── TestCase.robot            # ไฟล์ทดสอบหลัก
-├── demo.robot                # ไฟล์ทดสอบตัวอย่าง
-├── requirements.txt          # รายการ dependencies
-├── setting.json              # การตั้งค่าโปรเจค
-├── Technical test.py         # Python script สำหรับการทดสอบ
-├── resource/
-│   ├── Keywords.robot        # คำสั่งที่ใช้ในการทดสอบ
-│   └── Variables.robot       # ตัวแปรและ locators
-├── results/                  # ผลลัพธ์การทดสอบ (ไม่ถูก track)
-├── screenshots/              # ภาพหน้าจอระหว่างการทดสอบ (ไม่ถูก track)
-└── venv/                     # Python Virtual Environment (ไม่ถูก track)
-```
+- Python 3.13.4 or higher
+- Microsoft Edge browser
+- Edge WebDriver (msedgedriver.exe)
 
-## 🚀 การติดตั้งและใช้งาน
+## 📦 Installation
 
-### 1. ติดตั้ง Dependencies
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd robot_tests-Doppio
+   ```
 
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate virtual environment**
+   ```bash
+   # Windows
+   venv\Scripts\activate
+   
+   # Linux/Mac
+   source venv/bin/activate
+   ```
+
+4. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Download Edge WebDriver**
+   - Download from: https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+   - Place `msedgedriver.exe` in `C:/WebDrivers/Edge/`
+   - Update path in `resource/Variables.robot` if needed
+
+## 🚀 Running Tests
+
+### Run all test cases
 ```bash
-# สร้าง Virtual Environment
-python -m venv venv
-
-# เปิดใช้งาน Virtual Environment
-# Windows
-venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
-
-# ติดตั้ง packages
-pip install -r requirements.txt
-```
-
-### 2. ติดตั้ง WebDriver
-
-ดาวน์โหลดและติดตั้ง Edge WebDriver:
-- ดาวน์โหลดจาก: https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
-- วางไฟล์ `msedgedriver.exe` ใน `C:/WebDrivers/Edge/`
-- หรือแก้ไข path ในไฟล์ `resource/Variables.robot`
-
-### 3. รันการทดสอบ
-
-```bash
-# รันการทดสอบทั้งหมด
-robot TestCase.robot
-
-# รันการทดสอบเฉพาะ test case
-robot -t "TC-0001*" TestCase.robot
-
-# รันการทดสอบพร้อมสร้าง report
 robot --outputdir results TestCase.robot
 ```
 
-## 📝 Test Cases
-
-### TC-0001: Add to cart and checkout cart with mug search
-- ทดสอบการค้นหา "mug" ผ่าน search suggestion
-- เพิ่ม White Ceramic Mug จำนวน 3 ชิ้นลงตะกร้า
-- ตรวจสอบการคำนวณราคารวม
-- ใช้คูปอง "General12345"
-- ลบสินค้าออกจากตะกร้า
-
-### TC-0002: Add to cart and Checkout Cart with Ceramic Mug search
-- ทดสอบการค้นหา "ceramic mug" ผ่าน search button
-- เพิ่ม White Ceramic Mug จำนวน 3 ชิ้นลงตะกร้า
-- ตรวจสอบการคำนวณราคารวม
-- ใช้คูปอง "General12345"
-- ลบสินค้าออกจากตะกร้า
-
-## 🔧 การกำหนดค่า
-
-### ตัวแปรสำคัญใน `resource/Variables.robot`:
-
-```robot
-${Signin_URL}    https://training-platform2.doppio-tech.com/signin
-${Home_URL}      https://training-platform2.doppio-tech.com/
-${EMAIL}         your-email@example.com
-${PASSWORD}      your-password
+### Run specific test case
+```bash
+robot --outputdir results --test "TC-0001*" TestCase.robot
 ```
 
-### WebDriver Configuration:
+### Run with specific browser
+```bash
+robot --outputdir results --variable BROWSER:chrome TestCase.robot
+```
+
+### Run with parallel execution
+```bash
+pabot --outputdir results TestCase.robot
+```
+
+## 📁 Project Structure
+
+```
+robot_tests-Doppio/
+├── TestCase.robot              # Main test cases
+├── demo.robot                  # Demo test case
+├── resource/
+│   ├── Keywords.robot          # Custom keywords
+│   └── Variables.robot         # Test data and locators
+├── results/                    # Test execution results
+│   ├── output.xml             # Robot Framework output
+│   ├── log.html               # Detailed execution log
+│   ├── report.html            # Test execution report
+│   └── geckodriver-1.log      # WebDriver logs
+├── screenshots/               # Test screenshots
+├── requirements.txt           # Python dependencies
+└── README.md                  # This file
+```
+
+## 🔧 Configuration
+
+### Test Data
+Update credentials in `resource/Variables.robot`:
+```robot
+${EMAIL}            your-email@example.com
+${PASSWORD}         your-password
+${FULLNAME}         Your Full Name
+${MOBILE}           0123456789
+```
+
+### WebDriver Path
+Update Edge WebDriver path in `resource/Variables.robot`:
 ```robot
 ${EDGE_DRIVER}    C:/WebDrivers/Edge/msedgedriver.exe
 ```
 
-## 🎯 ฟีเจอร์หลัก
+### URLs
+Test URLs are configured in `resource/Variables.robot`:
+- Home: `https://training-platform2.doppio-tech.com/`
+- Signin: `https://training-platform2.doppio-tech.com/signin`
+- Signup: `https://training-platform2.doppio-tech.com/signup`
+- Cart: `https://training-platform2.doppio-tech.com/cart`
 
-### 1. Shadow DOM Support
-- รองรับการทำงานกับ Shadow DOM elements
-- ใช้ JavaScript execution สำหรับเข้าถึง shadow elements
+## 🎨 Key Features
 
-### 2. Dynamic Element Handling
-- รอให้ elements ปรากฏก่อนดำเนินการ
-- ใช้ multiple selector strategies สำหรับความเสถียร
+### Shadow DOM Support
+The project includes custom keywords to handle Shadow DOM elements:
+- `Get Shadow Element`: Retrieve elements within shadow DOM
+- `Get Shadow Text`: Extract text from shadow DOM elements
 
-### 3. Cart Management
-- เพิ่ม/ลบสินค้าจากตะกร้า
-- ตรวจสอบราคารวม
-- รองรับการใช้งานคูปอง
+### Advanced Cart Management
+- Add multiple items to cart
+- Apply coupons and verify pricing
+- Remove all items with confirmation
+- Verify empty cart state
 
-### 4. Screenshot Capture
-- บันทึกภาพหน้าจอเมื่อเกิดข้อผิดพลาด
-- เก็บภาพในโฟลเดอร์ `results/`
+### Robust Element Handling
+- Multiple locator strategies (XPath, CSS, data-testid)
+- Wait strategies for dynamic content
+- Error handling and retry mechanisms
 
-## 📊 ผลลัพธ์การทดสอบ
+## 📊 Test Results
 
-หลังจากการทดสอบจะได้ไฟล์ผลลัพธ์:
-- `log.html` - รายละเอียดการทดสอบ
-- `report.html` - สรุปผลการทดสอบ
-- `output.xml` - ผลลัพธ์ในรูปแบบ XML
-- `selenium-screenshot-*.png` - ภาพหน้าจอเมื่อเกิดข้อผิดพลาด
+After test execution, view results in:
+- **report.html**: High-level test summary
+- **log.html**: Detailed execution log with screenshots
+- **output.xml**: Machine-readable results
 
-## 🔍 การ Debug
+## 🐛 Troubleshooting
 
-### ดู Log ระหว่างการทดสอบ:
+### Common Issues
+
+1. **WebDriver not found**
+   - Ensure Edge WebDriver is downloaded and path is correct
+   - Check file permissions
+
+2. **Element not found**
+   - Verify website structure hasn't changed
+   - Check if elements are in Shadow DOM
+   - Increase wait timeouts
+
+3. **Authentication failures**
+   - Verify credentials in Variables.robot
+   - Check if account is active
+
+4. **Cart operations fail**
+   - Ensure items are properly added before cart operations
+   - Check coupon codes are valid
+
+### Debug Mode
+Run tests with debug output:
 ```bash
-robot --loglevel DEBUG TestCase.robot
+robot --loglevel DEBUG --outputdir results TestCase.robot
 ```
 
-### รันการทดสอบแบบ Interactive:
-```bash
-robot --dryrun TestCase.robot
-```
+## 📝 Dependencies
 
-## 📋 Prerequisites
+- **Robot Framework**: 7.0
+- **SeleniumLibrary**: 6.2.0
+- **Selenium**: 4.20.0
+- **WebDriver Manager**: 4.0.2
 
-- Python 3.7+
-- Microsoft Edge Browser
-- Edge WebDriver
-- Internet Connection
+## 🤝 Contributing
 
-```
-
-## 📈 Test Results
-
-โปรเจคนี้มี Test Cases หลัก 2 ตัว:
-- **TC-0001**: ทดสอบการค้นหาและเพิ่มสินค้าผ่าน search suggestion
-- **TC-0002**: ทดสอบการค้นหาและเพิ่มสินค้าผ่าน search button
-
-ทั้งสอง test cases ทดสอบฟีเจอร์:
-- ✅ User Authentication
-- ✅ Product Search
-- ✅ Add to Cart
-- ✅ Cart Management
-- ✅ Coupon Application
-- ✅ Price Calculation
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
 
 
-
-## 🔗 Links
-
-- **GitHub Repository**: [https://github.com/CLOUDYMMM/ecommerce-automation-tests](https://github.com/CLOUDYMMM/ecommerce-automation-tests)
-- **Robot Framework Documentation**: [https://robotframework.org/](https://robotframework.org/)
-- **Selenium Documentation**: [https://selenium.dev/](https://selenium.dev/)
 
 ---
 
-**หมายเหตุ**: โปรเจคนี้ใช้สำหรับการทดสอบระบบ E-commerce และเป็นส่วนหนึ่งของการประเมินเทคนิค
+**Last Updated**: September 2025  
+**Robot Framework Version**: 7.3  
+**Python Version**: 3.13.4

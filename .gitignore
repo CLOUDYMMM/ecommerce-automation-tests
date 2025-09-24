@@ -1,3 +1,23 @@
+# Robot Framework
+*.log
+*.html
+*.xml
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+
+# Test Results
+results/
+output.xml
+log.html
+report.html
+selenium-screenshot-*.png
+geckodriver-*.log
+
 # Python
 __pycache__/
 *.py[cod]
@@ -28,15 +48,6 @@ ENV/
 env.bak/
 venv.bak/
 
-# Robot Framework Results
-results/
-*.log
-*.html
-*.xml
-selenium-screenshot-*.png
-geckodriver-*.log
-pabot_results/
-
 # IDE
 .vscode/
 .idea/
@@ -46,16 +57,30 @@ pabot_results/
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
-desktop.ini
 
 # Temporary files
 *.tmp
 *.temp
 *.bak
+*.backup
 
-# Screenshots (optional - uncomment if you don't want to track screenshots)
-# screenshots/
+# WebDriver logs
+chromedriver.log
+geckodriver.log
+msedgedriver.log
 
-# Configuration files with sensitive data
-# setting.json
+# Pabot results
+pabot_results/
+.pabotsuitenames
+
+# Interactive console
+interactive_console_output.xml
+
+# Settings
+setting.json
