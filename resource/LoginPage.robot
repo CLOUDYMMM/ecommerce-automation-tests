@@ -4,6 +4,7 @@ Resource    Keywords.robot
 
 *** Keywords ***
 Open signin page
+    [Documentation]    เปิดหน้าเว็บไซต์เพื่อ Login
     Open Browser    ${Home_URL}    edge    executable_path=${EDGE_DRIVER}
     Maximize Browser Window
     Click Button    ${xpath_btn_account}
@@ -12,6 +13,7 @@ Open signin page
     Log    Signin page opened
 
 Input signin data
+    [Documentation]    กรอกข้อมูลใส่หน้า Login
     ${email_input}=     Get Shadow Element    ${css_email}
     ${password_input}=  Get Shadow Element    ${css_password}
     Input Text          ${email_input}    ${EMAIL}
@@ -23,6 +25,7 @@ Input signin data
     Log    Signin completed
 
 Verify signin success
+    [Documentation]    ตรวจสอบ Login ผ่าน 
     Location Should Be    ${Home_URL}
     Page Should Contain Element    ${xpath_btn_account}
     Element Should Contain          ${xpath_btn_account}    ${EMAIL}
