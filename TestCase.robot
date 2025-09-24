@@ -22,7 +22,7 @@ TC-0001 Add to cart and checkout cart with mug search
         Verify Cart Is Empty
     [Teardown]     Close Browser
 
-TC-0002 Add to cart and Checkout Cart with Ceremic Mug search
+TC-0002 Add to cart and Checkout Cart with Ceramic Mug search
     [Documentation]    search for 3 ceramic mug and add to cart then verify checkout is updated and correct price
         Open Signin Page
         Input Signin Data
