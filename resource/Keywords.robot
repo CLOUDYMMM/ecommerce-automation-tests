@@ -2,20 +2,20 @@
 Resource    Variables.robot
 
 *** Keywords ***
-Get Shadow Element
+Get shadow element
     [Documentation]    ดึง element ที่อยู่ใน shadow DOM โดยใช้ CSS selector
     [Arguments]    ${element_selector}
     ${element}=    Execute Javascript    return document.querySelector('${shadow_host}').shadowRoot.querySelector('${element_selector}')
     RETURN       ${element}
 
-Get Shadow Text
+Get shadow text
     [Documentation]    ดึงข้อความจาก element ที่อยู่ใน shadow DOM และรอให้ element ปรากฏก่อน
     [Arguments]    ${element_selector}
     Wait Until Keyword Succeeds    10x    0.5s    Execute Javascript    var h=document.querySelector('${shadow_host}'); return !!(h && h.shadowRoot && h.shadowRoot.querySelector('${element_selector}'));
     ${text}=    Execute Javascript    var h=document.querySelector('${shadow_host}'); if(h && h.shadowRoot){ var el=h.shadowRoot.querySelector('${element_selector}'); return el ? (el.textContent||'') : ''; } return '';
     RETURN       ${text}
 
-Open Signin Page
+Open signin page
     [Documentation]    เปิด browser และนำทางไปยังหน้า signin ผ่านปุ่ม account
     Open Browser    ${Home_URL}    edge    executable_path=${EDGE_DRIVER}
     Maximize Browser Window
@@ -24,14 +24,14 @@ Open Signin Page
     Verify redirect to signin page
     Log    Signin page opened
 
-Click Create Account
+Click create account
     [Documentation]    คลิกปุ่ม Create Account ที่อยู่ใน shadow DOM
     ${create_account}=    Get Shadow Element    ${css_create_account}
     Click Element         ${create_account}
     Sleep                 1s
     Log    Create Account link clicked
 
-Input Signup Form
+Input signup form
     [Documentation]    กรอกข้อมูลในฟอร์มสมัครสมาชิก (ชื่อ, เบอร์โทร, อีเมล, รหัสผ่าน)
     [Arguments]    ${fullname}=${FULLNAME}    ${mobile}=${MOBILE}    ${email}=${EMAIL}    ${password}=${PASSWORD}
     Input Text    ${fullname_input}        ${fullname}
@@ -41,13 +41,13 @@ Input Signup Form
     Input Text    ${signup_confirm}        ${password}
     Log    Signup form filled
 
-Confirm Create Account
+Confirm create account
     [Documentation]    ยืนยันการสร้างบัญชีโดยคลิกปุ่ม Create Account
     Click Element    ${btn_create_account}
     Sleep            2s
     Log    Account creation confirmed
 
-Input Signin Data
+Input signin data
     [Documentation]    กรอกข้อมูลเข้าสู่ระบบ (อีเมลและรหัสผ่าน) และคลิกปุ่ม signin
     ${email_input}=     Get Shadow Element    ${css_email}
     ${password_input}=  Get Shadow Element    ${css_password}
@@ -70,7 +70,7 @@ Search for mug on search bar and click suggestion
     Sleep   3s
     Log    Search completed
 
-Click Search Button
+Click search button
     [Documentation]    คลิกปุ่มค้นหา
     Wait Until Element Is Visible    ${xpath_search_btn_testid}    timeout=5s
     Click Button    ${xpath_search_btn_testid}
@@ -84,12 +84,12 @@ Search for ceramic mug on search bar
     Sleep    1s
     Log    Search completed
 
-Find Ceramic Mug Product
+Find ceramic mug product
     [Documentation]    ค้นหาและรอให้ Ceramic Mug product ปรากฏในหน้า products
     Wait Until Keyword Succeeds    10x    1s    Execute Javascript    var h=document.querySelector('${products_shadow_host}'); return !!(h && h.shadowRoot && h.shadowRoot.querySelector('${ceramic_mug_product}')); 
     Log    Ceramic Mug product found
 
-Click View Details For Ceramic Mug
+Click view details for ceramic mug
     [Documentation]    คลิกปุ่ม View Details ของ Ceramic Mug โดยใช้ CSS selector
     ${view_details_btn}=    Get Shadow Element    ${ceramic_mug_view_details}
     Wait Until Element Is Visible    ${view_details_btn}    timeout=5s
@@ -98,7 +98,7 @@ Click View Details For Ceramic Mug
     Log    View Details clicked for Ceramic Mug
 
     
-Select White Ceramic Mug
+Select white ceramic mug
     [Documentation]    เลือกสีขาวสำหรับ Ceramic Mug ที่อยู่ใน shadow DOM
     ${white_btn}=    Get Shadow Element    ${color_white_btn}
     Wait Until Element Is Visible    ${white_btn}    timeout=5s
@@ -113,7 +113,7 @@ Open cart page
     Sleep    2s
     Log    Cart page opened
 
-Add Multiple Ceramic Mugs To Cart
+Add multiple ceramic mugs To cart
     [Documentation]    เพิ่ม Ceramic Mug หลายชิ้นลงในตะกร้าโดยระบุจำนวน
     [Arguments]    ${quantity}=3
 
@@ -130,14 +130,14 @@ Add Multiple Ceramic Mugs To Cart
     Sleep    5s  
     Log    3 Ceramic Mugs added to cart
 
-Select All Items In Cart
+Select all items in cart
     [Documentation]    เลือกสินค้าทั้งหมดในตะกร้าด้วยปุ่ม Select All
     ${select_all}=     Get Shadow Element    ${cart_select_all}
     Click Element      ${select_all}
     Sleep              5s
     Log    All items selected
 
-Select Coupon General12345
+Select coupon general12345
     [Documentation]    เลือกคูปอง General12345 จาก dropdown และกด Apply
     # เปิด dropdown
     ${dropdown}=     Get Shadow Element    ${coupon_dropdown}
@@ -155,7 +155,7 @@ Select Coupon General12345
     Sleep            2s
     Log    Coupon applied
 
-Verify Checkout Total
+Verify checkout total
     [Documentation]    ตรวจสอบยอดรวมในหน้า checkout ว่าถูกต้อง (รวมส่วนลด, ค่าจัดส่ง, VAT)
     [Arguments]    ${discount_text}=None
 
@@ -186,7 +186,7 @@ Verify Checkout Total
 
 
 
-Remove All Cart Items
+Remove all cart items
     [Documentation]    ลบสินค้าทั้งหมด: วนคลิก Remove+Confirm จนไม่มี container สินค้า top-level เหลือ
     ${count}=    Execute Javascript    var h=document.querySelector('${shadow_host}'); if(h&&h.shadowRoot){ return h.shadowRoot.querySelectorAll('${cart_item_container}').length; } return 0;
     WHILE    ${count} > 0
@@ -208,7 +208,7 @@ Remove All Cart Items
     Sleep    5s
     Log    All cart items removed
 
-Verify Cart Is Empty
+Verify cart is empty
     [Documentation]    ตรวจสอบว่าตะกร้าสินค้าว่างเปล่า โดยดูข้อความ "Your cart is empty" หรือจำนวนสินค้าเป็น 0
     # รอจนกว่าจะพบข้อความว่าง หรือไม่มีแถวสินค้าเหลือ
     Wait Until Keyword Succeeds    20x    0.5s    Execute Javascript    var h=document.querySelector('${shadow_host}'); if(!(h&&h.shadowRoot)) return false; var emptyEl=h.shadowRoot.querySelector('${cart_empty_message}'); var rows=h.shadowRoot.querySelectorAll('${cart_item_container}').length; return (emptyEl!==null) || (rows===0);
@@ -222,14 +222,14 @@ Verify Cart Is Empty
     sleep     5s
     Log    Cart is empty verified
 
-Verify Signin Success
+Verify signin success
     [Documentation]    ตรวจสอบว่าการเข้าสู่ระบบสำเร็จ โดยดู URL และอีเมลที่แสดงในปุ่ม account
     Location Should Be    ${Home_URL}
     Page Should Contain Element    ${xpath_btn_account}
     Element Should Contain    ${xpath_btn_account}    ${EMAIL}
     Log    Signin verified
 
-Verify Signup Success   
+Verify signup success   
     [Documentation]    ตรวจสอบว่าการสมัครสมาชิกสำเร็จ โดยดู URL และอีเมลที่แสดงในปุ่ม account
     Location Should Be    ${Home_URL}
     Page Should Contain Element    ${xpath_btn_account}
