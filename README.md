@@ -96,16 +96,21 @@ robot_tests-Doppio/
 ├── TestCase.robot              # Main test cases
 ├── demo.robot                  # Demo test case
 ├── resource/
-│   ├── Keywords.robot          # Custom keywords
-│   └── Variables.robot         # Test data and locators
+│   ├── SignupPage.robot        # Signup page keywords
+│   ├── LoginPage.robot         # Login page keywords
+│   ├── ProductPage.robot       # Product page keywords
+│   ├── CartPage.robot          # Cart page keywords
+│   ├── Variables.robot         # Test data and locators
+│   └── Keywords.robot          # Generic keywords
 ├── results/                    # Test execution results
-│   ├── output.xml             # Robot Framework output
-│   ├── log.html               # Detailed execution log
-│   ├── report.html            # Test execution report
-│   └── geckodriver-1.log      # WebDriver logs
-├── screenshots/               # Test screenshots
-├── requirements.txt           # Python dependencies
-└── README.md                  # This file
+│   ├── output.xml
+│   ├── log.html
+│   ├── report.html
+│   └── geckodriver-1.log
+├── screenshots/                # Test screenshots
+├── requirements.txt            # Python dependencies
+└── README.md                   # Project documentation
+
 ```
 
 ## 🔧 Configuration

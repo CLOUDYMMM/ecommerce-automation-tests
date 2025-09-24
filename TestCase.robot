@@ -3,6 +3,10 @@ Library    SeleniumLibrary
 Library    Collections
 Resource    resource/Variables.robot
 Resource    resource/Keywords.robot    
+Resource    resource/CartPage.robot
+Resource    resource/LoginPage.robot
+Resource    resource/SignupPage.robot
+Resource    resource/ProductPage.robot
 
 
 *** Test Cases ***
