@@ -21,16 +21,21 @@
 ## 📁 โครงสร้างโปรเจค
 
 ```
-robot_tests - Login/
-├── demo.robot                 # ไฟล์ทดสอบตัวอย่าง
+ecommerce-automation-tests/
+├── .gitignore                # Git ignore file
+├── .pabotsuitenames          # Pabot suite configuration
+├── README.md                 # เอกสารโปรเจค
 ├── TestCase.robot            # ไฟล์ทดสอบหลัก
+├── demo.robot                # ไฟล์ทดสอบตัวอย่าง
 ├── requirements.txt          # รายการ dependencies
+├── setting.json              # การตั้งค่าโปรเจค
+├── Technical test.py         # Python script สำหรับการทดสอบ
 ├── resource/
 │   ├── Keywords.robot        # คำสั่งที่ใช้ในการทดสอบ
 │   └── Variables.robot       # ตัวแปรและ locators
-├── results/                  # ผลลัพธ์การทดสอบ
-├── screenshots/              # ภาพหน้าจอระหว่างการทดสอบ
-└── venv/                     # Python Virtual Environment
+├── results/                  # ผลลัพธ์การทดสอบ (ไม่ถูก track)
+├── screenshots/              # ภาพหน้าจอระหว่างการทดสอบ (ไม่ถูก track)
+└── venv/                     # Python Virtual Environment (ไม่ถูก track)
 ```
 
 ## 🚀 การติดตั้งและใช้งาน
@@ -149,21 +154,29 @@ robot --dryrun TestCase.robot
 - Edge WebDriver
 - Internet Connection
 
-## 🤝 การมีส่วนร่วม
+```
 
-1. Fork โปรเจค
-2. สร้าง feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit การเปลี่ยนแปลง (`git commit -m 'Add some AmazingFeature'`)
-4. Push ไปยัง branch (`git push origin feature/AmazingFeature`)
-5. เปิด Pull Request
+## 📈 Test Results
 
-## 📄 License
+โปรเจคนี้มี Test Cases หลัก 2 ตัว:
+- **TC-0001**: ทดสอบการค้นหาและเพิ่มสินค้าผ่าน search suggestion
+- **TC-0002**: ทดสอบการค้นหาและเพิ่มสินค้าผ่าน search button
 
-โปรเจคนี้เป็นส่วนหนึ่งของการทดสอบเทคนิค (Technical Test)
+ทั้งสอง test cases ทดสอบฟีเจอร์:
+- ✅ User Authentication
+- ✅ Product Search
+- ✅ Add to Cart
+- ✅ Cart Management
+- ✅ Coupon Application
+- ✅ Price Calculation
 
-## 📞 ติดต่อ
 
-หากมีคำถามหรือข้อสงสัย กรุณาติดต่อทีมพัฒนา
+
+## 🔗 Links
+
+- **GitHub Repository**: [https://github.com/CLOUDYMMM/ecommerce-automation-tests](https://github.com/CLOUDYMMM/ecommerce-automation-tests)
+- **Robot Framework Documentation**: [https://robotframework.org/](https://robotframework.org/)
+- **Selenium Documentation**: [https://selenium.dev/](https://selenium.dev/)
 
 ---
 
