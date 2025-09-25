@@ -65,7 +65,7 @@ ${btn_back_signin}       a[data-signup="signup-form0-div14-a1"]
 ${xpath_search_bar}    xpath=//*[@id="nav-search-input"]
 ${xpath_search_suggestion_ceramic_mug}    xpath=//*[normalize-space(text())='Ceramic Mug']
 
-# Search Button Selectors (Multiple Options for Better Uniqueness)
+# Search Button Selectors 
 ${xpath_search_btn_basic}    xpath=//*[@id="btn-search"]
 ${xpath_search_btn_testid}    xpath=//button[@data-testid="nav-search-submit"]
 ${xpath_search_btn_submit}    xpath=//button[@type="submit"]

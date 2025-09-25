@@ -31,6 +31,8 @@ Click search button
 Find ceramic mug product
     [Documentation]    หาสินค้าชื่อ Ceramic Mug ในหน้า Product
     Wait Until Keyword Succeeds    10x    1s    Execute Javascript    var h=document.querySelector('${products_shadow_host}'); return !!(h && h.shadowRoot && h.shadowRoot.querySelector('${ceramic_mug_product}')); 
+    ${name}=    Get Shadow Text    ${ceramic_mug_name}
+    Should Be Equal    ${name}    Ceramic Mug
     Log    Ceramic Mug product found
 
 Click view details for ceramic mug

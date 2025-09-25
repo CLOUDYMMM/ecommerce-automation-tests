@@ -17,7 +17,7 @@ Select all items in cart
     Sleep  5s
     Log    All items selected
 
-Select coupon general12345
+Select coupon first item
     [Documentation]    เลือกคูปองส่วนลด
     ${dropdown}=     Get Shadow Element    ${coupon_dropdown}
     Click Element    ${dropdown}
@@ -62,6 +62,7 @@ Remove all cart items
     Log    All cart items removed
 
 Verify cart is empty
+    [Documentation]    ตรวจสอบว่าตะกร้าไม่มีสินค้าแล้ว 
     Wait Until Keyword Succeeds    20x    0.5s    Execute Javascript    var h=document.querySelector('${shadow_host}'); if(!(h&&h.shadowRoot)) return false; var emptyEl=h.shadowRoot.querySelector('${cart_empty_message}'); var rows=h.shadowRoot.querySelectorAll('${cart_item_container}').length; return (emptyEl!==null) || (rows===0);
     ${empty_text}=    Execute Javascript    var h=document.querySelector('${shadow_host}'); if(h&&h.shadowRoot){ var el=h.shadowRoot.querySelector('${cart_empty_message}'); return el ? (el.textContent||'').trim() : ''; } return '';
     ${rows}=    Execute Javascript    var h=document.querySelector('${shadow_host}'); if(h&&h.shadowRoot){ return h.shadowRoot.querySelectorAll('${cart_item_container}').length; } return 0;

@@ -20,7 +20,7 @@ TC-0001 Add to cart and checkout cart with mug search
         ProductPage.Add multiple ceramic mugs To cart    3
         CartPage.Open cart page
         CartPage.Select all items in cart
-        CartPage.Select coupon general12345
+        CartPage.Select coupon first item
         CartPage.Verify checkout total
         CartPage.Remove all cart items
         CartPage.Verify cart is empty
@@ -38,7 +38,7 @@ TC-0002 Add to cart and Checkout Cart with Ceramic Mug search
         ProductPage.Add multiple ceramic mugs To cart    3
         CartPage.Open cart page
         CartPage.Select all items in cart
-        CartPage.Select coupon general12345
+        CartPage.Select coupon first item
         CartPage.Verify checkout total
         CartPage.Remove all cart items
         CartPage.Verify cart is empty
