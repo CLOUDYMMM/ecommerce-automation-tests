@@ -2,6 +2,8 @@
 Resource    Variables.robot
 Resource    Keywords.robot
 
+
+
 *** Keywords ***
 Open cart page
     [Documentation]    เปิดหน้าตะกร้าสินค้า
@@ -31,8 +33,8 @@ Select coupon first item
     Log    Coupon applied
 
 Verify checkout total
-    [Documentation]    เช็คคำนวนราคารวมในหน้าตะกร้าสินค้า
-    [Arguments]    ${discount_text}=None
+    [Documentation]    เช็คคำนวนราคารวม: total = subtotal - discount + shipping + vat 
+    [Arguments]    ${discount_percent}=None    ${expected_total}=None
     ${total_text}=       Get Shadow Text    ${cart_total}
     ${subtotal_text}=    Get Shadow Text    ${cart_subtotal}
     ${shipping_text}=    Get Shadow Text    ${cart_shipping}
@@ -41,11 +43,11 @@ Verify checkout total
     ${subtotal}=    Evaluate    float(__import__('re').sub(r'[^0-9.]','', '''${subtotal_text}'''))
     ${shipping}=    Evaluate    float(__import__('re').sub(r'[^0-9.]','', '''${shipping_text}'''))
     ${vat}=         Evaluate    float(__import__('re').sub(r'[^0-9.]','', '''${vat_text}'''))
-    ${discount}=    Set Variable    0
-    Run Keyword If    ${discount_text}    ${discount}=    Evaluate    float(__import__('re').sub(r'[^0-9.]','', '''${discount_text}'''))
-    ${expected_total}=    Evaluate    ${subtotal} - ${discount} + ${shipping} + ${vat}
-    Should Be Equal As Numbers    ${total}    ${expected_total}
-    Should Be Equal As Numbers    ${total}    323.00
+    ${percent_value}=    Evaluate    (lambda m: abs(float(m.group())) if m else 0.0)(__import__('re').search(r'-?\\d+(?:\\.\\d+)?', '''${discount_percent}'''))
+    ${discount}=    Evaluate    (${percent_value}/100.0)*${subtotal}
+    ${expected_formula_total}=    Evaluate    ${subtotal} - ${discount} + ${shipping} + ${vat}
+    Should Be Equal As Numbers    ${total}    ${expected_formula_total}
+    Run Keyword If    '''${expected_total}''' not in (None, '', 'None')    Should Be Equal As Numbers    ${total}    ${expected_total}
     Log    Checkout total verified
 
 Remove all cart items

@@ -21,7 +21,7 @@ TC-0001 Add to cart and checkout cart with mug search
         CartPage.Open cart page
         CartPage.Select all items in cart
         CartPage.Select coupon first item
-        CartPage.Verify checkout total
+        CartPage.Verify checkout total    none  323.00
         CartPage.Remove all cart items
         CartPage.Verify cart is empty
     [Teardown]     Close Browser
@@ -39,7 +39,7 @@ TC-0002 Add to cart and Checkout Cart with Ceramic Mug search
         CartPage.Open cart page
         CartPage.Select all items in cart
         CartPage.Select coupon first item
-        CartPage.Verify checkout total
+        CartPage.Verify checkout total    none  323.00
         CartPage.Remove all cart items
         CartPage.Verify cart is empty
     [Teardown]     Close Browser

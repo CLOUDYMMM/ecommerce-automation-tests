@@ -42,6 +42,7 @@ ${cart_item_rows}         css=div[data-cart*="div0-div1-div1-div0-div0-div0"]
 ${cart_select_all}    input[data-cart="cart-div0-div1-div0-label0-input0"]
 ${cart_item_prices}    div[data-cart*="div1-div0-div1-div2"]
 ${cart_empty_msg}    css=p[data-cart="cart-div0-p1"]
+${cart_percent_spans}    span[aria-label^="cart-span-"]
 
 
 # Element Locators for Signin page
