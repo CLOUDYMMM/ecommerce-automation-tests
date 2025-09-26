@@ -15,9 +15,9 @@ TC-0001 Add to cart and checkout cart with mug search
     [Documentation]     search for 3 mug and add to cart then verify checkout is updated and correct price
         LoginPage.Open signin page
         LoginPage.Input signin data
-        ProductPage.Search for mug on search bar and click suggestion
-        ProductPage.Select white ceramic mug
-        ProductPage.Add multiple ceramic mugs To cart    3
+        ProductPage.Search and click suggestion  Mug    Ceramic Mug
+        ProductPage.Select product color    Ceramic Mug    White
+        ProductPage.Add multiple products To cart   Ceramic Mug    3
         CartPage.Open cart page
         CartPage.Select all items in cart
         CartPage.Select coupon first item
@@ -30,12 +30,12 @@ TC-0002 Add to cart and Checkout Cart with Ceramic Mug search
     [Documentation]    search for 3 ceramic mug and add to cart then verify checkout is updated and correct price
         LoginPage.Open signin page
         LoginPage.Input signin data
-        ProductPage.Search for ceramic mug on search bar
+        ProductPage.Search for product    Ceramic Mug
         ProductPage.Click search button
-        ProductPage.Find ceramic mug product
-        ProductPage.Click view details for ceramic mug
-        ProductPage.Select white ceramic mug
-        ProductPage.Add multiple ceramic mugs To cart    3
+        ProductPage.Find product by name    Ceramic Mug
+        ProductPage.Click view details for product    Ceramic Mug    
+        ProductPage.Select product color    Ceramic Mug    White
+        ProductPage.Add multiple products To cart    Ceramic Mug    3
         CartPage.Open cart page
         CartPage.Select all items in cart
         CartPage.Select coupon first item
